@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
 
     lib::print_ip(std::string("1.2.3.4"), std::cout);
 
-    lib::print_ip(std::make_tuple(3, 4, 3), std::cout);
+    lib::print_ip(std::make_tuple(4, 3, 2, 1), std::cout);
 
     return 0;
 }
