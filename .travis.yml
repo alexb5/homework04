@@ -9,18 +9,29 @@ before_script:
   - sudo apt-get install -qq g++-8
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90
 
-  #build gtest
+  build gtest
   - cd /usr/src/gtest
   - sudo env "PATH=$PATH" cmake CMakeLists.txt
   - sudo make
   - sudo cp *.a /usr/lib
   - cd "${TRAVIS_BUILD_DIR}"
 
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - doxygen
+      - graphviz
+
 script:
   - cmake .
   - cmake --build .
   - ctest .
   - cpack .
+  - doxygen
 
 deploy:
   provider: script
