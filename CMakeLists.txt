@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.10)
 
-project(print_ip VERSION 1.1.$ENV{TRAVIS_BUILD_NUMBER})
+project(print_ip VERSION 1.1.#$ENV{TRAVIS_BUILD_NUMBER})
 
 configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
@@ -16,6 +16,7 @@ add_executable(test_${PROJECT_NAME} test_lib.cpp)
 set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
+        CMAKE_CXX_EXTENSIONS OFF
         COMPILE_OPTIONS -Wpedantic -Wall -Wextra
         )
 

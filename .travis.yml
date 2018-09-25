@@ -16,10 +16,6 @@ before_script:
   - sudo cp *.a /usr/lib
   - cd "${TRAVIS_BUILD_DIR}"
 
-branches:
-  only:
-    - master
-
 addons:
   apt:
     packages:
