@@ -13,14 +13,14 @@ add_library(library "lib.cpp")
 add_executable(test_${PROJECT_NAME} test_lib.cpp)
 
 
-set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
+set_target_properties(library ${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
         CMAKE_CXX_EXTENSIONS OFF
         COMPILE_OPTIONS -Wpedantic -Wall -Wextra
         )
 
-set_target_properties(test_${PROJECT_NAME} PROPERTIES
+set_target_properties(library test_${PROJECT_NAME} PROPERTIES
         INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
         )
 
