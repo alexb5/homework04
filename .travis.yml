@@ -35,7 +35,14 @@ script:
   - doxygen
 
 deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-  - curl -T print_ip-1.1.$TRAVIS_BUILD_NUMBER-Linux.deb -ualexb5:$BINTRAY_API_KEY "https://api.bintray.com/content/alexb5/hello_world/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-1.1.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - provider: script
+    skip_cleanup: true
+    script:
+    - curl -T print_ip-1.1.$TRAVIS_BUILD_NUMBER-Linux.deb -ualexb5:$BINTRAY_API_KEY "https://api.bintray.com/content/alexb5/hello_world/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-1.1.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - provider: pages
+    skip-cleanup: true
+    local-dir: html
+    github-token: $GH_REPO_TOKEN
+    keep-history: true
+    on:
+      branch: master
