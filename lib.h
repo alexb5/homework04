@@ -138,7 +138,7 @@ void print_ip(T ip, std::ostream& out)
         auto size = sizeof(T);
         std::string ip_string{};
         const auto begin = reinterpret_cast<uint8_t*>(&ip);
-        for (auto i = begin; i < begin + size; ++i) {
+        for (auto i = begin + size - 1; i >= begin; --i) {
             ip_string.append(std::to_string(*i));
             ip_string.append(".");
         }

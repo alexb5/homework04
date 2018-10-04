@@ -23,7 +23,7 @@ TEST(print_ip, test_print_integral_types)
     lib::print_ip(uint32_t{0xFCFDFEFF}, s);
 
 
-    EXPECT_EQ(s.str(), std::string{"0\n255\n1\n255.254\n255.254.253.252\n"});
+    EXPECT_EQ(s.str(), std::string{"0\n255\n1\n254.255\n252.253.254.255\n"});
 }
 
 TEST(print_ip, test_print_container_types)
